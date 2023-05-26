@@ -1,0 +1,24 @@
+{
+  "name": "test_node_server",
+  "version": "0.0.1",
+  "description": "test server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashabull66/test_node_server.git"
+  },
+  "author": "sashabull66",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sashabull66/test_node_server/issues"
+  },
+  "homepage": "https://github.com/sashabull66/test_node_server#readme",
+  "devDependencies": {
+    "@types/node": "^20.2.4",
+    "typescript": "^5.0.4"
+  }
+}

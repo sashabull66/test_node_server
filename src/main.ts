@@ -1,15 +1,22 @@
 import http from 'node:http';
+import * as fs from 'fs';
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
   switch (req.url) {
-    case '/':
+    case '/data':
       {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Hello, World!\n');
+        fs.readFile('./mock/data.json', { encoding: 'utf-8' }, (err, data) => {
+          if (err) {
+            res.statusCode = 500;
+            res.setHeader('Content-Type', 'text/plain');
+            res.end('Error');
+          }
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'text/plain');
+          res.end(data);
+        });
       }
       break;
     case '/test': {
@@ -20,6 +27,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(port, hostname, () => {
-  console.warn(`Server running at http://${hostname}:${port}/`);
+server.listen(port, () => {
+  console.warn(`*** Server running at port ${port} ***`);
 });
